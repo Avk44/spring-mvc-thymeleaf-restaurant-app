@@ -3,7 +3,6 @@ package be.multimedi.restoapp.model;
 import be.multimedi.restoapp.model.enums.Kitchen;
 import be.multimedi.restoapp.model.enums.Star;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

@@ -1,7 +1,6 @@
 package be.multimedi.restoapp.model;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity

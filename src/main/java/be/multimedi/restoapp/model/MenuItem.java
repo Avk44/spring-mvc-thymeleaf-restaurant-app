@@ -3,7 +3,6 @@ package be.multimedi.restoapp.model;
 import be.multimedi.restoapp.model.enums.MenuItemCategory;
 import be.multimedi.restoapp.model.enums.MoneyType;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
