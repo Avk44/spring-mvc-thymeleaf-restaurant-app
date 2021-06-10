@@ -13,11 +13,11 @@
     <div class="row row h-100 align-items-center justify-content-centerr">
         <div class="col align-self-cente ">
             <div class="card">
-                <div class="card-header text-center display-4">
-                    Add Restaurant
+                <div th:text="(${restaurant.id} == null ? 'Add Restaurant' : 'Edit Restaurant')" class="card-header text-center display-4">
                 </div>
                 <div class="card-body">
                     <form action="" th:action="@{/restaurant/new}" th:object="${restaurant}" method="post">
+                        <input  type="hidden" th:field="*{id}"/>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="name">Restaurant Name</label>
@@ -53,16 +53,20 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
+                                <label for="postcode">Postcode</label>
+                                <input type="text" th:field="*{address.postcode}"  class="form-control" id="postcode" placeholder="Postcode">
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="city">City</label>
                                 <input type="text" th:field="*{address.city}"  class="form-control" id="city" placeholder="City">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="country">Country</label>
                                 <input type="text" th:field="*{address.country}"  class="form-control" id="country" placeholder="Country">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
                     </form>
                 </div>
             </div>

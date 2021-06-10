@@ -80,10 +80,12 @@
                             <td th:text="${restaurant.address.postcode} + ', ' + ${restaurant.address.city} + '/' + ${restaurant.address.country}"></td>
                         </tr>
                         <tr>
-                            <a th:href="@{'/restaurant/' + ${restaurant.id} + '/food_menu'}">
+                            <td><a th:href="@{'/restaurant/' + ${restaurant.id} + '/food_menu'}">
                                 <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">FOOD MENU</button>
-                            </a>
-                            <td><button class="btn btn-danger">EDIT</button></td>
+                            </a></td>
+                            <td><a th:href="@{'/restaurant/' + ${restaurant.id} + '/edit'}">
+                                <button class="btn btn-warning">EDIT</button>
+                            </a></td>
                         </tr>
                         </tbody>
                     </table>

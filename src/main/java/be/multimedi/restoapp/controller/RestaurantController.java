@@ -41,7 +41,19 @@ public class RestaurantController {
     }
 
     @PostMapping("/restaurant/new")
-    public String fetchMenuById(Restaurant restaurant){
+    public String addRestaurant(Restaurant restaurant){
+        restaurantService.register(restaurant);
+        return "restaurant-detail";
+    }
+
+    @GetMapping("/restaurant/{id}/edit")
+    public String showRestaurantEditForm(Model model,@PathVariable Long id){
+        model.addAttribute("restaurant",restaurantService.getRestaurantById(id));
+        return "restaurant-form";
+    }
+
+    @PostMapping("/restaurant/{id}/edit")
+    public String editRestaurant(Restaurant restaurant){
         restaurantService.register(restaurant);
         return "restaurant-detail";
     }

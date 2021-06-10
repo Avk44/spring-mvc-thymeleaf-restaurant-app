@@ -45,12 +45,12 @@ input[type="checkbox"] {
 
 .text-center {
     color: #FDFFFC !important;
-    background-color: #52177A !important;
+    background-color: darkorange !important;
 }
 
 .btn-primary {
     color: #FDFFFC;
-    background-color: #8D27D1;
+    background-color: darkorange;
     border-color: #8D27D1;
 }
 
