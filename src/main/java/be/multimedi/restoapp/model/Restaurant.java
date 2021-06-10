@@ -2,6 +2,7 @@ package be.multimedi.restoapp.model;
 
 import be.multimedi.restoapp.model.enums.Kitchen;
 import be.multimedi.restoapp.model.enums.Star;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

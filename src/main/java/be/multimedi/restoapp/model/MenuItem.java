@@ -2,10 +2,10 @@ package be.multimedi.restoapp.model;
 
 import be.multimedi.restoapp.model.enums.MenuItemCategory;
 import be.multimedi.restoapp.model.enums.MoneyType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +14,7 @@ import java.util.Set;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
