@@ -5,6 +5,8 @@ import be.multimedi.restoapp.repository.MenuItemRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @AllArgsConstructor
@@ -15,4 +17,5 @@ public class MenuItemServiceImpl implements MenuItemService {
     public void register(MenuItem menuItem) {
         menuItemRepository.save(menuItem);
     }
+
 }

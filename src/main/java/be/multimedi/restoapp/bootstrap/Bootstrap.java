@@ -79,7 +79,7 @@ public class Bootstrap {
                 .address(address1)
                 .menu(new HashSet<>())
                 .build();
-        restaurant.addMenuItem(menuItem1);
+        restaurant1.addMenuItem(menuItem1);
 
         restaurantService.register(restaurant1);
     }

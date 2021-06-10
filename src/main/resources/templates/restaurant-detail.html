@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${restaurant.name}"></title>
+    <th:block th:include="fragments/cdn.html :: head-cdn"></th:block>
+    <th:block th:include="fragments/custom.html :: head-custom"></th:block>
+    <th:block th:include="fragments/custom.html :: head-font"></th:block>
+
+</head>
+<body>
+<header th:replace="fragments/header.html :: header"></header>
+<div class="container min-vh-100">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h1 th:text="${restaurant.name}"></h1>
+                    <img th:src="${restaurant.photoUrl}" class="d-inline" alt=""
+                         src="https://picsum.photos/45/67" width="300" height="300">
+                </div>
+                <div class="col-6">
+                    <table class="table mt-3">
+                        <tbody>
+                        <tr>
+                            <th:block th:switch="${restaurant.review}">
+                                <td th:case="${restaurant.review.ONE}">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </td>
+                                <td th:case="${restaurant.review.TWO}">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </td>
+                                <td th:case="${restaurant.review.THREE}">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </td>
+                                <td th:case="${restaurant.review.FOUR}">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                </td>
+                                <td th:case="${restaurant.review.FIVE}">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </td>
+                            </th:block>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Name :</td>
+                            <td th:text="${restaurant.name} + ' restaurant'"></td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Kitchen :</td>
+                            <td th:text="${restaurant.kitchen}"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="font-weight-bold">Address :</td>
+                            <td th:text="${restaurant.address.street} + ', ' + ${restaurant.address.number}"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td th:text="${restaurant.address.postcode} + ', ' + ${restaurant.address.city} + '/' + ${restaurant.address.country}"></td>
+                        </tr>
+                        <tr>
+                            <a th:href="@{'/restaurant/' + ${restaurant.id} + '/food_menu'}">
+                                <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">FOOD MENU</button>
+                            </a>
+                            <td><button class="btn btn-danger">EDIT</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<th:block th:include="fragments/cdn.html :: script-cdn"></th:block>
+</body>
+</html>
+
