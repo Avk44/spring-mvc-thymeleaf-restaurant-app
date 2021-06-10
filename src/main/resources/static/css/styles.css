@@ -3,9 +3,12 @@ body {
 }
 
 .container {
-    background-color: #f3f3f3;
+    background-color: bisque;
 }
 
 .navbar{
     background-color: #e3f2fd;;
+}
+.checked {
+    color: darkorange;
 }

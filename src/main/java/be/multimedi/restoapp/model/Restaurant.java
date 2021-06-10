@@ -19,6 +19,7 @@ public class Restaurant {
     private Long id;
     private String name;
     private Star review;
+    private String photoUrl;
     @Enumerated(value = EnumType.STRING)
     private Kitchen kitchen;
     @OneToOne(cascade = CascadeType.PERSIST)

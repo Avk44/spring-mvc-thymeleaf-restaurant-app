@@ -8,22 +8,7 @@
     <th:block th:include="fragments/custom.html :: head-custom"></th:block>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="/home">
-            <img src="/img/restaurant-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Resto-App
-        </a>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Restaurants</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+<header th:replace="fragments/header.html :: header"></header>
 <div class="container min-vh-100 text-center d-flex align-items-center justify-content-center">
     <div>
         <h1>Welcome to Resto App</h1>
