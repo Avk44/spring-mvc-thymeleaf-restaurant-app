@@ -2,25 +2,25 @@ package be.multimedi.restoapp.model;
 
 import be.multimedi.restoapp.model.enums.Kitchen;
 import be.multimedi.restoapp.model.enums.Star;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Star review;
+    @Enumerated(value = EnumType.STRING)
     private Kitchen kitchen;
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id")
