@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Restaurant</title>
+    <title>Restaurant</title>
     <th:block th:include="fragments/cdn.html :: head-cdn"></th:block>
     <th:block th:include="fragments/custom.html :: head-custom-form"></th:block>
     <th:block th:include="fragments/custom.html :: head-font"></th:block>
@@ -43,13 +44,14 @@
                             </div>
                         </div>
                         <div class="form-row">
+                            <input  type="hidden" th:field="*{address.id}"/>
                             <div class="form-group col-md-6">
                                 <label for="street">Street</label>
                                 <input type="text" th:field="*{address.street}" class="form-control" id="street" placeholder="Street">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="bouwNumber">Number</label>
-                                <input type="number" th:field="*{address.number}"  class="form-control" id="bouwNumber" placeholder="Number">
+                                <input type="number" min="1" th:field="*{address.number}"  class="form-control" id="bouwNumber" placeholder="Number">
                             </div>
                         </div>
                         <div class="form-row">

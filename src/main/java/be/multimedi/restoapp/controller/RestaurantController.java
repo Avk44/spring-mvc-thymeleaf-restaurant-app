@@ -69,6 +69,6 @@ public class RestaurantController {
     public String addMenuItem(MenuItem menuItem){
         Restaurant restaurant = restaurantService.findRestaurantByName(menuItem.getRestaurant().getName());
         restaurantService.addMenuItemToRestaurant(menuItem,restaurant);
-        return "restaurant-list";
+        return "redirect:/restaurant/" + restaurant.getId() + "/food_menu";
     }
 }

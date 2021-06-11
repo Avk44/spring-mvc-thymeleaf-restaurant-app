@@ -79,16 +79,28 @@
                             <td></td>
                             <td th:text="${restaurant.address.postcode} + ', ' + ${restaurant.address.city} + '/' + ${restaurant.address.country}"></td>
                         </tr>
-                        <tr>
-                            <td><a th:href="@{'/restaurant/' + ${restaurant.id} + '/food_menu'}">
-                                <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">FOOD MENU</button>
-                            </a></td>
-                            <td><a th:href="@{'/restaurant/' + ${restaurant.id} + '/edit'}">
-                                <button class="btn btn-warning">EDIT</button>
-                            </a></td>
-                        </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <td><a th:href="@{'/restaurant/' + ${restaurant.id} + '/food_menu'}">
+                            <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">FOOD MENU</button>
+                        </a></td>
+                    </div>
+                    <div class="col-md-4">
+                        <td><a th:href="@{'/menu-item/new'}">
+                            <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">+ NEW MENU ITEM</button>
+                        </a></td>
+                    </div>
+                    <div class="col-md-4">
+                        <td><a th:href="@{'/restaurant/' + ${restaurant.id} + '/edit'}">
+                            <button class="btn btn-warning">EDIT RESTAURANT</button>
+                        </a></td>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

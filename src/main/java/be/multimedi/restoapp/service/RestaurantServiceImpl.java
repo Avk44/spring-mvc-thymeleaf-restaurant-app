@@ -44,17 +44,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public void addMenuItemToRestaurant(MenuItem menuItem, Restaurant restaurant) {
-        Restaurant updatedRestaurant = Restaurant.builder()
-                .id(restaurant.getId())
-                .name(restaurant.getName())
-                .photoUrl(restaurant.getPhotoUrl())
-                .review(restaurant.getReview())
-                .kitchen(restaurant.getKitchen())
-                .menu(restaurant.getMenu())
-                .address(restaurant.getAddress())
-                .build();
-        updatedRestaurant.addMenuItem(menuItem);
-        register(updatedRestaurant);
+        restaurant.addMenuItem(menuItem);
+        register(restaurant);
     }
 
     @Override

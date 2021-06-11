@@ -18,7 +18,6 @@ import java.util.HashSet;
 @AllArgsConstructor
 public class Bootstrap {
     private RestaurantService restaurantService;
-    private MenuItemService menuItemService;
 
     @PostConstruct
     public void init(){
