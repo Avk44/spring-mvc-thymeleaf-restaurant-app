@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Edit Food Menu</title>
@@ -41,7 +42,7 @@
             <div class="form-row">
               <div class="form-group col-md-8">
                 <label for="price">Menu Item Price</label>
-                <input type="number" class="form-control" th:field="*{price}" id="price">
+                <input type="number" min="1" class="form-control" th:field="*{price}" id="price">
               </div>
             </div>
             <div class="form-row">

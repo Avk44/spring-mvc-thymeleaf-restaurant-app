@@ -8,6 +8,7 @@ import be.multimedi.restoapp.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,13 +24,20 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<Restaurant> getAllRestaurantsByKitchen(Kitchen kitchen) {
-        return restaurantRepository.findRestaurantsByKitchen(kitchen);
+    public List<Restaurant> getAllRestaurantsByKitchen(String kitchen) {
+        List<Restaurant> restaurants = new ArrayList<>();
+        for (Kitchen kitchen1: Kitchen.values()) {
+            if (kitchen1.name().equalsIgnoreCase(kitchen)){
+                restaurants = restaurantRepository.findRestaurantsByKitchen(Kitchen.valueOf(kitchen.toUpperCase()));
+            }
+        }
+
+        return restaurants;
     }
 
     @Override
-    public List<Restaurant> getAllRestaurantsByStar(Star review) {
-        return restaurantRepository.findRestaurantsByReview(review);
+    public List<Restaurant> getAllRestaurantsByCity(String city) {
+        return restaurantRepository.findRestaurantsByAddress_CityIgnoreCase(city);
     }
 
     @Override
@@ -51,5 +59,10 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant findRestaurantByName(String name) {
         return restaurantRepository.findRestaurantByName(name);
+    }
+
+    @Override
+    public List<Restaurant> getAllRestaurantsByName(String searchTerm) {
+        return restaurantRepository.findRestaurantsByNameIgnoreCaseIsLike("%" + searchTerm + "%");
     }
 }

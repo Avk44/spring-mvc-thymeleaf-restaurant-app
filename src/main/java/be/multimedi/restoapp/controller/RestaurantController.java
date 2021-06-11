@@ -2,6 +2,8 @@ package be.multimedi.restoapp.controller;
 
 import be.multimedi.restoapp.model.MenuItem;
 import be.multimedi.restoapp.model.Restaurant;
+import be.multimedi.restoapp.model.enums.Kitchen;
+import be.multimedi.restoapp.model.enums.Star;
 import be.multimedi.restoapp.service.RestaurantService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -70,5 +75,26 @@ public class RestaurantController {
         Restaurant restaurant = restaurantService.findRestaurantByName(menuItem.getRestaurant().getName());
         restaurantService.addMenuItemToRestaurant(menuItem,restaurant);
         return "redirect:/restaurant/" + restaurant.getId() + "/food_menu";
+    }
+
+    @GetMapping(value = "/restaurants", params = "name")
+    public String fetchAllRestaurantsByName(Model model,@RequestParam(name = "name") String searchTerm){
+        List<Restaurant> searchedRestaurants = restaurantService.getAllRestaurantsByName(searchTerm);
+        model.addAttribute("restaurants",searchedRestaurants);
+        return "restaurant-list";
+    }
+
+    @GetMapping(value = "/restaurants", params = "kitchen")
+    public String fetchAllRestaurantsByKitchen(Model model, @RequestParam(name = "kitchen")String kitchen){
+        List<Restaurant> searchedRestaurants = restaurantService.getAllRestaurantsByKitchen(kitchen);
+        model.addAttribute("restaurants",searchedRestaurants);
+        return "restaurant-list";
+    }
+
+    @GetMapping(value = "/restaurants", params = "city")
+    public String fetchAllRestaurantsByNameOrCity(Model model,@RequestParam(name = "city") String city){
+        List<Restaurant> searchedRestaurants = restaurantService.getAllRestaurantsByCity(city);
+        model.addAttribute("restaurants",searchedRestaurants);
+        return "restaurant-list";
     }
 }
