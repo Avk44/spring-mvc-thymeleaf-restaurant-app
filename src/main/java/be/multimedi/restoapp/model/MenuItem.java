@@ -5,6 +5,7 @@ import be.multimedi.restoapp.model.enums.MoneyType;
 import lombok.*;
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,14 +26,19 @@ public class MenuItem {
     @Column(name = "money_type")
     @Enumerated(value = EnumType.STRING)
     private MoneyType moneyType;
-    @ManyToMany(mappedBy = "menu", fetch = FetchType.EAGER)
-    private Set<Restaurant> restaurants = new HashSet<>();
+    @ManyToOne()
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
-
-    public void addRestaurant(Restaurant restaurant){
-        restaurants.add(restaurant);
-        if(!restaurant.getMenu().contains(this)) {
-            restaurant.addMenuItem(this);
-        }
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", photoUrl='" + photoUrl + '\'' +
+                ", category=" + category +
+                ", price=" + price +
+                ", moneyType=" + moneyType +
+                '}';
     }
 }

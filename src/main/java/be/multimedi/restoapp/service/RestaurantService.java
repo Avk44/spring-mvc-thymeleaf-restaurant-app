@@ -1,5 +1,6 @@
 package be.multimedi.restoapp.service;
 
+import be.multimedi.restoapp.model.MenuItem;
 import be.multimedi.restoapp.model.Restaurant;
 import be.multimedi.restoapp.model.enums.Kitchen;
 import be.multimedi.restoapp.model.enums.Star;
@@ -12,5 +13,7 @@ public interface RestaurantService {
     List<Restaurant> getAllRestaurantsByStar(Star review);
     void register(Restaurant restaurant);
     Restaurant getRestaurantById(Long id);
+    void addMenuItemToRestaurant(MenuItem menuItem,Restaurant restaurant);
+    Restaurant findRestaurantByName(String name);
 
 }

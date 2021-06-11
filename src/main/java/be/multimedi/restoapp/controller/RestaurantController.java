@@ -1,6 +1,6 @@
 package be.multimedi.restoapp.controller;
 
-
+import be.multimedi.restoapp.model.MenuItem;
 import be.multimedi.restoapp.model.Restaurant;
 import be.multimedi.restoapp.service.RestaurantService;
 import lombok.AllArgsConstructor;
@@ -56,5 +56,19 @@ public class RestaurantController {
     public String editRestaurant(Restaurant restaurant){
         restaurantService.register(restaurant);
         return "restaurant-detail";
+    }
+
+    @GetMapping("/menu-item/new")
+    public String showMenuItemAddForm(Model model){
+        model.addAttribute("item",new MenuItem());
+        model.addAttribute("restaurants",restaurantService.getAllRestaurants());
+        return "food-menu-form";
+    }
+
+    @PostMapping("/menu-item/new")
+    public String addMenuItem(MenuItem menuItem){
+        Restaurant restaurant = restaurantService.findRestaurantByName(menuItem.getRestaurant().getName());
+        restaurantService.addMenuItemToRestaurant(menuItem,restaurant);
+        return "restaurant-list";
     }
 }

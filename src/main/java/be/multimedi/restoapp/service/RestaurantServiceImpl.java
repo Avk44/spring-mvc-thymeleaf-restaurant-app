@@ -1,5 +1,6 @@
 package be.multimedi.restoapp.service;
 
+import be.multimedi.restoapp.model.MenuItem;
 import be.multimedi.restoapp.model.Restaurant;
 import be.multimedi.restoapp.model.enums.Kitchen;
 import be.multimedi.restoapp.model.enums.Star;
@@ -39,5 +40,25 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant getRestaurantById(Long id) {
         return restaurantRepository.getById(id);
+    }
+
+    @Override
+    public void addMenuItemToRestaurant(MenuItem menuItem, Restaurant restaurant) {
+        Restaurant updatedRestaurant = Restaurant.builder()
+                .id(restaurant.getId())
+                .name(restaurant.getName())
+                .photoUrl(restaurant.getPhotoUrl())
+                .review(restaurant.getReview())
+                .kitchen(restaurant.getKitchen())
+                .menu(restaurant.getMenu())
+                .address(restaurant.getAddress())
+                .build();
+        updatedRestaurant.addMenuItem(menuItem);
+        register(updatedRestaurant);
+    }
+
+    @Override
+    public Restaurant findRestaurantByName(String name) {
+        return restaurantRepository.findRestaurantByName(name);
     }
 }

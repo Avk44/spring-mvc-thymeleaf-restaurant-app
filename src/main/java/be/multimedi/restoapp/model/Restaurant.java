@@ -25,16 +25,12 @@ public class Restaurant {
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id")
     private Address address;
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "Restaurant_menu_item",
-            joinColumns = @JoinColumn(name = "restaurant_id"),
-            inverseJoinColumns = @JoinColumn(name = "menu_item_id"))
+    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL)
     private Set<MenuItem> menu = new HashSet<>();
 
     public void addMenuItem(MenuItem menuItem){
         this.menu.add(menuItem);
-        if(!menuItem.getRestaurants().contains(this)){
-            menuItem.addRestaurant(this);
-        }
     }
+
+
 }

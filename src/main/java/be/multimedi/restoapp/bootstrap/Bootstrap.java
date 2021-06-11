@@ -7,7 +7,6 @@ import be.multimedi.restoapp.model.enums.Kitchen;
 import be.multimedi.restoapp.model.enums.MenuItemCategory;
 import be.multimedi.restoapp.model.enums.MoneyType;
 import be.multimedi.restoapp.model.enums.Star;
-import be.multimedi.restoapp.service.MenuItemService;
 import be.multimedi.restoapp.service.RestaurantService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -37,27 +36,6 @@ public class Bootstrap {
                 .city("Maasmechelen")
                 .country("Belgium").build();
 
-        MenuItem menuItem = MenuItem.builder()
-                .name("Kebap")
-                .category(MenuItemCategory.GRILL)
-                .photoUrl("https://media-cdn.tripadvisor.com/media/photo-s/0e/4e/e4/7e/tavuk-kizartma-sogan.jpg")
-                .price(15.00)
-                .moneyType(MoneyType.EURO)
-                .restaurants(new HashSet<>())
-                .build();
-
-        MenuItem menuItem1 = MenuItem.builder()
-                .name("Spaghetti")
-                .category(MenuItemCategory.MAIN_COURSE)
-                .photoUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR96xVtGipWb3y2lBrSBz-j-j3p44AjQXz-SAdVmxmR84IYtK0DQd26ncDcVeV8LkxxnPQ&usqp=CAU")
-                .price(14.50)
-                .moneyType(MoneyType.EURO)
-                .restaurants(new HashSet<>())
-                .build();
-
-        menuItemService.register(menuItem);
-        menuItemService.register(menuItem1);
-
         Restaurant restaurant = Restaurant.builder()
                 .name("Ali Baba")
                 .kitchen(Kitchen.TURKISH)
@@ -67,9 +45,6 @@ public class Bootstrap {
                 .menu(new HashSet<>())
                 .build();
 
-        restaurant.addMenuItem(menuItem);
-
-        restaurantService.register(restaurant);
 
         Restaurant restaurant1 = Restaurant.builder()
                 .name("Giuliano")
@@ -79,8 +54,30 @@ public class Bootstrap {
                 .address(address1)
                 .menu(new HashSet<>())
                 .build();
-        restaurant1.addMenuItem(menuItem1);
 
+
+        MenuItem menuItem = MenuItem.builder()
+                .name("Kebap")
+                .category(MenuItemCategory.GRILL)
+                .photoUrl("https://media-cdn.tripadvisor.com/media/photo-s/0e/4e/e4/7e/tavuk-kizartma-sogan.jpg")
+                .price(15.00)
+                .moneyType(MoneyType.EURO)
+                .restaurant(restaurant)
+                .build();
+
+        MenuItem menuItem1 = MenuItem.builder()
+                .name("Spaghetti")
+                .category(MenuItemCategory.MAIN_COURSE)
+                .photoUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR96xVtGipWb3y2lBrSBz-j-j3p44AjQXz-SAdVmxmR84IYtK0DQd26ncDcVeV8LkxxnPQ&usqp=CAU")
+                .price(14.50)
+                .moneyType(MoneyType.EURO)
+                .restaurant(restaurant1)
+                .build();
+
+
+        restaurant.addMenuItem(menuItem);
+        restaurantService.register(restaurant);
+        restaurant1.addMenuItem(menuItem1);
         restaurantService.register(restaurant1);
     }
 }
