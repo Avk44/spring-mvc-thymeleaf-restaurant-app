@@ -66,3 +66,6 @@ input[type="checkbox"] {
 label {
     font-weight: bold;
 }
+.input-error{
+    color: #e03c23;
+}

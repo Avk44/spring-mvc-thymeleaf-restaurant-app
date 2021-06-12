@@ -2,17 +2,16 @@ package be.multimedi.restoapp.controller;
 
 import be.multimedi.restoapp.model.MenuItem;
 import be.multimedi.restoapp.model.Restaurant;
-import be.multimedi.restoapp.model.enums.Kitchen;
-import be.multimedi.restoapp.model.enums.Star;
 import be.multimedi.restoapp.service.RestaurantService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -46,9 +45,13 @@ public class RestaurantController {
     }
 
     @PostMapping("/restaurant/new")
-    public String addRestaurant(Restaurant restaurant){
-        restaurantService.register(restaurant);
-        return "restaurant-detail";
+    public String addRestaurant(@Valid Restaurant restaurant, BindingResult br){
+        if (br.hasErrors()){
+            return "restaurant-form";
+        }else{
+            restaurantService.register(restaurant);
+            return "restaurant-detail";
+        }
     }
 
     @GetMapping("/restaurant/{id}/edit")
@@ -92,7 +95,7 @@ public class RestaurantController {
     }
 
     @GetMapping(value = "/restaurants", params = "city")
-    public String fetchAllRestaurantsByNameOrCity(Model model,@RequestParam(name = "city") String city){
+    public String fetchAllRestaurantsByCity(Model model,@RequestParam(name = "city") String city){
         List<Restaurant> searchedRestaurants = restaurantService.getAllRestaurantsByCity(city);
         model.addAttribute("restaurants",searchedRestaurants);
         return "restaurant-list";

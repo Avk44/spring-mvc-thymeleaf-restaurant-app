@@ -3,11 +3,9 @@ package be.multimedi.restoapp.service;
 import be.multimedi.restoapp.model.MenuItem;
 import be.multimedi.restoapp.model.Restaurant;
 import be.multimedi.restoapp.model.enums.Kitchen;
-import be.multimedi.restoapp.model.enums.Star;
 import be.multimedi.restoapp.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +24,11 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public List<Restaurant> getAllRestaurantsByKitchen(String kitchen) {
         List<Restaurant> restaurants = new ArrayList<>();
-        for (Kitchen kitchen1: Kitchen.values()) {
-            if (kitchen1.name().equalsIgnoreCase(kitchen)){
+        for (Kitchen kitchen1 : Kitchen.values()) {
+            if (kitchen1.name().equalsIgnoreCase(kitchen)) {
                 restaurants = restaurantRepository.findRestaurantsByKitchen(Kitchen.valueOf(kitchen.toUpperCase()));
             }
         }
-
         return restaurants;
     }
 

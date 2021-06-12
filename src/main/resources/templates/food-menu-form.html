@@ -2,69 +2,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Edit Food Menu</title>
-  <th:block th:include="fragments/cdn.html :: head-cdn"></th:block>
-  <th:block th:include="fragments/custom.html :: head-custom-form"></th:block>
-  <th:block th:include="fragments/custom.html :: head-font"></th:block>
+    <meta charset="UTF-8">
+    <title>Edit Food Menu</title>
+    <th:block th:include="fragments/cdn.html :: head-cdn"></th:block>
+    <th:block th:include="fragments/custom.html :: head-custom-form"></th:block>
+    <th:block th:include="fragments/custom.html :: head-font"></th:block>
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
 <div class="container h-100vh">
-  <div class="row row h-100 align-items-center justify-content-center">
-    <div class="col align-self-center">
-      <div class="card">
-        <div class="card-header text-center display-4">
-        Add Menu Item
+    <div class="row row h-100 align-items-center justify-content-center">
+        <div class="col align-self-center">
+            <div class="card">
+                <div class="card-header text-center display-4">
+                    Add Menu Item
+                </div>
+                <div class="card-body">
+                    <form action="" th:action="@{'/menu-item/new'}" th:object="${item}" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="name">Menu Item Name</label>
+                                <input type="text" class="form-control" th:field="*{name}" id="name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="photoUrl">Menu Item Photo Url</label>
+                                <input type="text" class="form-control" th:field="*{photoUrl}" id="photoUrl">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="restaurant">Restaurant</label>
+                                <select id="restaurant" class="form-control" th:field="*{restaurant}">
+                                    <option th:each="rest : ${restaurants}" th:value="${rest.id}" th:text="${rest.name}"
+                                            selected></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="price">Menu Item Price</label>
+                                <input type="number" min="1" class="form-control" th:field="*{price}" id="price">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="moneyType">Money Type</label>
+                                <select id="moneyType" class="form-control" th:field="*{moneyType}">
+                                    <option th:each="money : ${T(be.multimedi.restoapp.model.enums.MoneyType).values()}"
+                                            th:value="${money}" th:text="${money}" selected>Money Type
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="category">Category</label>
+                                <select id="category" class="form-control" th:field="*{category}">
+                                    <option th:each="c : ${T(be.multimedi.restoapp.model.enums.MenuItemCategory).values()}"
+                                            th:value="${c}" th:text="${c}" selected>Category
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <form action="" th:action="@{'/menu-item/new'}" th:object="${item}" method="post">
-            <div class="form-row">
-              <div class="form-group col-md-8">
-                <label for="name">Menu Item Name</label>
-                <input type="text" class="form-control" th:field="*{name}" id="name">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-8">
-                <label for="photoUrl">Menu Item Photo Url</label>
-                <input type="text" class="form-control" th:field="*{photoUrl}" id="photoUrl">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-8">
-                <label for="restaurant">Restaurant</label>
-                <select id="restaurant" class="form-control" th:field="*{restaurant}">
-                  <option th:each="rest : ${restaurants}"  th:value="${rest.id}" th:text="${rest.name}" selected></option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-8">
-                <label for="price">Menu Item Price</label>
-                <input type="number" min="1" class="form-control" th:field="*{price}" id="price">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="moneyType">Money Type</label>
-                <select id="moneyType" class="form-control" th:field="*{moneyType}">
-                  <option th:each="money : ${T(be.multimedi.restoapp.model.enums.MoneyType).values()}" th:value="${money}" th:text="${money}" selected>Money Type</option>
-                </select>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="category">Category</label>
-                <select id="category" class="form-control" th:field="*{category}">
-                  <option th:each="c : ${T(be.multimedi.restoapp.model.enums.MenuItemCategory).values()}" th:value="${c}" th:text="${c}" selected>Category</option>
-                </select>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 <th:block th:include="fragments/cdn.html :: script-cdn"></th:block>
 </body>

@@ -5,10 +5,6 @@ body {
 .container {
     background-color: bisque;
 }
-
-.navbar{
-    background-color: #e3f2fd;;
-}
 .checked {
     color: darkorange;
 }

@@ -2,12 +2,9 @@ package be.multimedi.restoapp.service;
 
 import be.multimedi.restoapp.model.MenuItem;
 import be.multimedi.restoapp.model.Restaurant;
-import be.multimedi.restoapp.model.enums.Kitchen;
-import be.multimedi.restoapp.model.enums.Star;
 import java.util.List;
 
 public interface RestaurantService {
-
     List<Restaurant> getAllRestaurants();
     List<Restaurant> getAllRestaurantsByKitchen(String kitchen);
     List<Restaurant> getAllRestaurantsByCity(String city);

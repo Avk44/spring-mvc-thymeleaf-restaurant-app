@@ -4,6 +4,7 @@ import be.multimedi.restoapp.model.enums.Kitchen;
 import be.multimedi.restoapp.model.enums.Star;
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,8 +18,10 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
     private Star review;
+    @NotBlank
     private String photoUrl;
     @Enumerated(value = EnumType.STRING)
     private Kitchen kitchen;

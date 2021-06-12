@@ -2,7 +2,6 @@ package be.multimedi.restoapp.repository;
 
 import be.multimedi.restoapp.model.Restaurant;
 import be.multimedi.restoapp.model.enums.Kitchen;
-import be.multimedi.restoapp.model.enums.Star;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
